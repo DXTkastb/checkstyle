@@ -48,6 +48,48 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
  * &lt;module name=&quot;DefaultComesLast&quot;/&gt;
  * </pre>
  * <p>
+ * Example:
+ * </p>
+ * <pre>
+ * public class Test {
+ *   void method(int i) {
+ *     switch (i) {
+ *       case 1:
+ *         break;
+ *       case 2:
+ *         break;
+ *       default:
+ *         // code
+ *         break; // OK
+ *     }
+ *
+ *     switch (i) {
+ *       case 1:
+ *         break;
+ *       case 2:
+ *         break; // OK
+ *     }
+ *
+ *     switch (i) {
+ *       case 1:
+ *         break;
+ *       default: // violation 'default' before 'case'
+ *         break;
+ *       case 2:
+ *         break;
+ *     }
+ *
+ *     switch (i) {
+ *       case 1:
+ *         default: // violation 'default' before 'case'
+ *           break;
+ *       case 2:
+ *         break;
+ *     }
+ *   }
+ * }
+ * </pre>
+ * <p>
  * To configure the check for skipIfLastAndSharedWithCase:
  * </p>
  * <pre>
@@ -63,7 +105,7 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
  *   case 1:
  *     break;
  *   case 2:
- *   default: // No violation with the new option is expected
+ *   default: // OK
  *     break;
  *   case 3:
  *     break;
