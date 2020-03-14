@@ -751,6 +751,48 @@ class K {
 &lt;module name=&quot;DefaultComesLast&quot;/&gt;
         </source>
         <p>
+          Example:
+        </p>
+        <source>
+public class Test {
+  void method(int i) {
+    switch (i) {
+      case 1:
+        break;
+      case 2:
+        break;
+      default:
+        // code
+        break; // OK
+    }
+
+    switch (i) {
+      case 1:
+        break;
+      case 2:
+        break; // OK
+    }
+
+    switch (i) {
+      case 1:
+        break;
+      default: // violation 'default' before 'case'
+        break;
+      case 2:
+        break;
+    }
+
+    switch (i) {
+      case 1:
+        default: // violation 'default' before 'case'
+          break;
+      case 2:
+        break;
+    }
+  }
+}
+        </source>
+        <p>
             To configure the check for skipIfLastAndSharedWithCase:
         </p>
         <source>
