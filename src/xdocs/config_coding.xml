@@ -808,7 +808,7 @@ switch (i) {
   case 1:
     break;
   case 2:
-  default: // No violation with the new option is expected
+  default: // OK
     break;
   case 3:
     break;
