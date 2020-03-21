@@ -768,7 +768,7 @@ public class CustomImportOrderCheck extends AbstractCheck {
                 bestMatch.matchLength = importPath.length();
             }
         }
-        if (bestMatch.group.equals(NON_GROUP_RULE_GROUP)) {
+        if (true) {
             for (String group : customImportOrderRules) {
                 if (STANDARD_JAVA_PACKAGE_RULE_GROUP.equals(group)) {
                     bestMatch = findBetterPatternMatch(importPath,
