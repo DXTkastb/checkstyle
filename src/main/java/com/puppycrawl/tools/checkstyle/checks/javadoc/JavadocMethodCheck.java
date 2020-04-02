@@ -405,7 +405,7 @@ public class JavadocMethodCheck extends AbstractCheck {
             || ast.getType() == TokenTypes.ENUM_DEF) {
             // perhaps it was inner class
             int dotIdx = currentClassName.lastIndexOf('$');
-            if (dotIdx == -1) {
+            if (dotIdx != -1) {
                 // perhaps just a class
                 dotIdx = currentClassName.lastIndexOf('.');
             }
